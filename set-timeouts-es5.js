@@ -23,6 +23,7 @@ var SetTimeouts = function () {
     this.functionToCall = functionToCall;
     this.id = null;
     if (typeof this.functionToCall !== 'function') {
+      console.error('functionToCall is not a Function');
       return;
     }
     if (!timeouts) {
@@ -31,6 +32,7 @@ var SetTimeouts = function () {
       this.timeouts = timeouts;
     }
     if (!(this.timeouts instanceof Array)) {
+      console.error('timeouts is not an Array');
       return;
     }
     this.id = id;
@@ -67,6 +69,7 @@ var SetTimeouts = function () {
       if (this.timeouts.length > 0) {
         var t = this.timeouts.shift();
         if (typeof t !== 'number') {
+          console.error('one of timeout in timeouts is not an Number: ' + t);
           return;
         }
         if (t < 1) {
