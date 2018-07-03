@@ -1,3 +1,4 @@
+'use strict';
 /**
   SetTimeouts: version: 1.1
   License: MIT
