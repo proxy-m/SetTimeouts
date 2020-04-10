@@ -1,6 +1,6 @@
 'use strict';
 /**
-  SetTimeouts: version: 1.3
+  SetTimeouts: version: 1.4
   License: MIT
 */
 class SetTimeouts {
@@ -77,7 +77,7 @@ class SetTimeouts {
         }
     }
   }
-  
+
   /**
     Start the SetTimeouts loop with soft stopping old (ensure that old loop has last one next tick).
   */
@@ -97,6 +97,23 @@ class SetTimeouts {
         };
     } else if (!doNotWarn) {
         console.warn('startSoft already initiated, no need additional');
+    }
+  }
+
+  /**
+   * Start one more last time and stop.
+   * Warning: it destroys settings of repeatLastTimeout and timeouts
+   */
+  startLastAndFinish(doNotImmediate, doWarn) {
+    if (!doNotImmediate || this.repeatLastTimeout) {
+        this.stop();
+    }
+    this.repeatLastTimeout = false;
+    this.timeouts = [0];
+    if (!doNotImmediate) {
+        this.start();
+    } else {
+        this.startSoft(!doWarn);
     }
   }
 }
