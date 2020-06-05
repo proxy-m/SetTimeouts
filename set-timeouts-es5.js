@@ -1,6 +1,6 @@
 'use strict';
 /**
-  SetTimeouts: version: 1.4
+  SetTimeouts: version: 1.6
   License: MIT
 */
 
