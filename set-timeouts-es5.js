@@ -156,6 +156,20 @@ var SetTimeouts = /*#__PURE__*/function () {
         this.startSoft(!doWarn);
       }
     }
+    /**
+     * Initiate one additional call of functionToCall
+     * @needAsync if you need async call instead of direct
+     */
+
+  }, {
+    key: "runOnce",
+    value: function runOnce(needAsync) {
+      if (!needAsync) {
+        this.functionToCallOrig();
+      } else {
+        setTimeout(this.functionToCallOrig, 1);
+      }
+    }
   }]);
 
   return SetTimeouts;
